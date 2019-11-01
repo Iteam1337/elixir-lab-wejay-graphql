@@ -1,7 +1,6 @@
 defmodule Wejay.Schema do
   use Absinthe.Schema
 
-  alias Wejay.Utils
   alias Wejay.Resolvers
 
   import_types(Wejay.Schema.DataTypes)
