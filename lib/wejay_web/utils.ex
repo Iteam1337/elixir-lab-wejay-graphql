@@ -3,9 +3,9 @@ defmodule Wejay.Utils do
     for {key, val} <- string_key_map, into: %{}, do: {String.to_atom(key), val}
   end
 
-  def normalize(map) do
-    map
-    |> Enum.map(fn v -> ProperCase.to_snake_case(v) end)
-    |> Enum.map(fn v -> create_atoms(v) end)
-  end
+  def normalize(map),
+    do:
+      map
+      |> Enum.map(&ProperCase.to_snake_case/1)
+      |> Enum.map(&create_atoms/1)
 end
