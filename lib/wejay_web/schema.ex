@@ -9,14 +9,7 @@ defmodule Wejay.Schema do
   query do
     @desc "Get queue"
     field :queue, non_null(list_of(non_null(:track))) do
-      resolve(fn _parent, _args ->
-        tracks =
-          ["5rq8QoUeKMxvtXu8C6pTwZ"]
-          |> Enum.map(fn v -> Track.get!(v).body.track end)
-          |> Utils.normalize()
-
-        {:ok, tracks}
-      end)
+      resolve(&Resolvers.Queue.get/2)
     end
 
     @desc "Search Spotify API"
